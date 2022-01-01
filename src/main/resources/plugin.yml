@@ -1,0 +1,4 @@
+name: VisionUtils
+version: '${version}'
+main: visionutils.Plugin
+api-version: 1.18
