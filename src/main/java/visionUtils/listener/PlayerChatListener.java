@@ -16,12 +16,11 @@ public class PlayerChatListener implements Listener {
         String newMessage = "";
         for (String word : words) {
             if (word.startsWith("@")) {
-                try {
-                    Player player = Bukkit.getPlayer(word.substring(1));
+
+                Player player = Bukkit.getPlayer(word.substring(1));
+
+                if (player != null)
                     player.playSound(player.getEyeLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 5, 0.5f);
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
 
                 word = ChatColor.RED + word.substring(1);
             }

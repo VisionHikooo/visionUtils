@@ -1,6 +1,7 @@
 package visionUtils.listener;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
@@ -8,7 +9,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 import visionUtils.listener.events.SpawnerBreakEvent;
+import visionUtils.utils.ItemBuilder;
+
+import java.util.Arrays;
 
 public class SpawnerBreakListener implements Listener {
 
@@ -25,15 +30,11 @@ public class SpawnerBreakListener implements Listener {
         CreatureSpawner creatureSpawner = (CreatureSpawner) event.getSpawner().getState();
         EntityType type = creatureSpawner.getSpawnedType();
 
-        ItemStack spawnerItem = new ItemStack(creatureSpawner.getType());
-        BlockStateMeta meta = (BlockStateMeta) spawnerItem.getItemMeta();
-
-        CreatureSpawner creatureSpawner2 = (CreatureSpawner) meta.getBlockState();
-        creatureSpawner2.setSpawnedType(type);
-        meta.setBlockState(creatureSpawner2);
-        spawnerItem.setItemMeta(meta);
+        ItemStack spawner = new ItemBuilder(Material.SPAWNER)
+                .setName(ChatColor.WHITE.toString() + ChatColor.BOLD + "Spawner")
+                .setLore(type.name()).build();
 
         event.getPlayer().sendMessage(ChatColor.GREEN.toString() + ChatColor.BOLD + "Du hast einen Spawner abgebaut!");
-        event.getSpawner().getWorld().dropItemNaturally(event.getSpawner().getLocation(), spawnerItem);
+        event.getSpawner().getWorld().dropItemNaturally(event.getSpawner().getLocation(), spawner);
     }
 }

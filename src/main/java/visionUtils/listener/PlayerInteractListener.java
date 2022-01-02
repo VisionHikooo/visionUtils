@@ -1,6 +1,8 @@
 package visionUtils.listener;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,7 +32,7 @@ public class PlayerInteractListener implements Listener {
 
                 if (crop.getAge() == crop.getMaximumAge()) {
                     Collection<ItemStack> drops = event.getClickedBlock().getDrops();
-                    drops.stream().map( drop ->  {
+                    drops.stream().map(drop ->  {
                         if (seeds.contains(drop.getType())) {
                             if (drop.getAmount() == 1)
                                 return new ItemStack(Material.AIR);
@@ -49,8 +51,15 @@ public class PlayerInteractListener implements Listener {
                 }
             }
         } else if (event.getAction() == Action.PHYSICAL) {
-            if (event.getClickedBlock().getType() == Material.FARMLAND)
+            if (event.getClickedBlock().getType() == Material.FARMLAND) {
                 event.setCancelled(true);
+                Block crop = event.getClickedBlock().getWorld().getBlockAt(event.getClickedBlock().getLocation().add(0,1,0));
+                Ageable ageable = (Ageable) crop.getBlockData();
+
+                ageable.setAge(0);
+                crop.setBlockData(ageable);
+                event.getPlayer().playSound(event.getClickedBlock().getLocation(), Sound.BLOCK_ROOTED_DIRT_PLACE, 3, 0.5f);
+            }
         }
     }
 
