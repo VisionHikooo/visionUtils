@@ -22,9 +22,9 @@ public class PlayerInteractListener implements Listener {
 
     @EventHandler
     public void onBlockBreak(PlayerInteractEvent event) {
-        if (event.getAction() == Action.LEFT_CLICK_BLOCK && event.getHand().equals(EquipmentSlot.HAND)) {
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getHand().equals(EquipmentSlot.HAND)) {
 
-            if (!(crops.contains(event.getMaterial()))) {
+            if (crops.contains(event.getClickedBlock().getType())) {
 
                 Ageable crop = (Ageable) event.getClickedBlock().getBlockData();
 
@@ -39,7 +39,8 @@ public class PlayerInteractListener implements Listener {
                         return drop;
                     }).forEach(
                             itemStack -> {
-                                event.getPlayer().getWorld().dropItemNaturally(event.getClickedBlock().getLocation(), itemStack);
+                                if (itemStack.getType() != Material.AIR)
+                                    event.getPlayer().getWorld().dropItemNaturally(event.getClickedBlock().getLocation(), itemStack);
                             }
                     );
 

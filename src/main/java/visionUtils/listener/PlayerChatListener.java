@@ -13,15 +13,22 @@ public class PlayerChatListener implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         String[] words = event.getMessage().split(" ");
-        for (String word : words)
+        String newMessage = "";
+        for (String word : words) {
             if (word.startsWith("@")) {
                 try {
                     Player player = Bukkit.getPlayer(word.substring(1));
-                    player.playSound(player.getEyeLocation(), Sound.BLOCK_BELL_RESONATE, 5, 0.5f);
-                    word = ChatColor.RED + word.substring(1);
+                    player.playSound(player.getEyeLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 5, 0.5f);
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
+
+                word = ChatColor.RED + word.substring(1);
             }
+
+            newMessage += word + " ";
+        }
+
+        event.setMessage(newMessage);
     }
 }

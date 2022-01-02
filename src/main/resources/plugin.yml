@@ -1,4 +1,8 @@
 name: VisionUtils
 version: '${version}'
-main: visionutils.Plugin
+main: visionUtils.Plugin
 api-version: 1.18
+commands:
+  skip:
+    usage: /skip [accept | decline]
+    description: Startet eine Abstimmung über das Skippen der Nacht
