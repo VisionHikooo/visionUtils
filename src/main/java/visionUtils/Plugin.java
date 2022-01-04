@@ -2,12 +2,17 @@ package visionUtils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import visionUtils.commands.NpcCMD;
+import visionUtils.commands.RainingTrollCMD;
 import visionUtils.commands.SkipNightCMD;
 import visionUtils.listener.*;
+import visionUtils.utils.FileManager;
 import visionUtils.utils.statics.Messages;
 import visionUtils.utils.statics.Statics;
 
 public final class Plugin extends JavaPlugin {
+
+    private FileManager fileManager;
 
     @Override
     public void onEnable() {
@@ -27,6 +32,8 @@ public final class Plugin extends JavaPlugin {
 
     private void initCommands() {
         this.getCommand("skip").setExecutor(new SkipNightCMD());
+        this.getCommand("rain").setExecutor(new RainingTrollCMD());
+        this.getCommand("npc").setExecutor(new NpcCMD());
     }
 
     private void initListener() {

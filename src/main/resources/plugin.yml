@@ -6,3 +6,9 @@ commands:
   skip:
     usage: /skip [accept | decline]
     description: Startet eine Abstimmung über das Skippen der Nacht
+  rain:
+    usage: /rain {Spielernamen}
+    description: Erweckt bei diesen Spielern den Schein, dass es regnen würde
+  npc:
+    usage: /npc
+    description: Spawnt einen NPC an der Position des Spielers
