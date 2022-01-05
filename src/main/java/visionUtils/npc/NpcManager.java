@@ -44,6 +44,10 @@ public class NpcManager {
     * Data
     * */
 
+    public List<VisionNPC> getNpcs() {
+        return npcs;
+    }
+
     public void loadNPCs() {
 
     }

@@ -13,6 +13,7 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Pose;
+import visionUtils.Plugin;
 
 import java.util.UUID;
 
@@ -20,6 +21,7 @@ public class VisionNPC {
 
     private EntityPlayer npc;
     private GameProfile gameProfile;
+    private UUID uuid;
 
     public VisionNPC(Player player, String name) {
 
@@ -36,7 +38,7 @@ public class VisionNPC {
         WorldServer worldServer = entityPlayer.x();
 
         if (gameProfile == null)
-            gameProfile = new GameProfile(UUID.randomUUID(), "Pisser");
+            gameProfile = new GameProfile(uuid, "Pisser");
 
         npc = new EntityPlayer(mcServer, worldServer, gameProfile);
     }
@@ -54,6 +56,8 @@ public class VisionNPC {
         con.a(new PacketPlayOutNamedEntitySpawn(npc));
         con.a(new PacketPlayOutEntityMetadata(npc.getBukkitEntity().getEntityId(),
                 npc.ai(), true));
+
+        Bukkit.getScheduler().runTaskLater(Plugin.getPlugin(Plugin.class), this::removeFromTab, 20);
     }
 
     public void setLocation(Location loc) {
@@ -66,7 +70,8 @@ public class VisionNPC {
     }
 
     public void createGameProfile(String name) {
-        gameProfile = new GameProfile(UUID.randomUUID(), name);
+        uuid = UUID.randomUUID();
+        gameProfile = new GameProfile(uuid, name);
     }
 
     public void setSkin(UUID uuid) {
@@ -109,5 +114,17 @@ public class VisionNPC {
     public void changePose(Pose pose) {
         npc.b(getEntityPose(pose));
         spawnNPC();
+    }
+
+    public EntityPlayer getNpc() {
+        return npc;
+    }
+
+    protected GameProfile getGameProfile() {
+        return gameProfile;
+    }
+
+    public UUID getUuid() {
+        return uuid;
     }
 }

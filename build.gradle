@@ -48,3 +48,8 @@ processResources {
         expand props
     }
 }
+
+task copyJarToBin(type: Copy) {
+    from 'build/libs/visionUtils-1.0-SNAPSHOT.jar' // shortcut for createJar.outputs.files
+    into "C:/Users/User/Desktop/Minecraft Server 1.18.1/plugins"
+}

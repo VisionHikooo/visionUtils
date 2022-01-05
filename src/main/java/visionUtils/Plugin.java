@@ -1,13 +1,16 @@
 package visionUtils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import visionUtils.commands.NpcCMD;
 import visionUtils.commands.RainingTrollCMD;
 import visionUtils.commands.SkipNightCMD;
 import visionUtils.listener.*;
+import visionUtils.npc.CorpManager;
 import visionUtils.npc.NpcManager;
 import visionUtils.utils.FileManager;
+import visionUtils.utils.PacketReader;
 import visionUtils.utils.statics.Messages;
 import visionUtils.utils.statics.Statics;
 
@@ -15,6 +18,7 @@ public final class Plugin extends JavaPlugin {
 
     private static FileManager fileManager;
     private static NpcManager npcManager;
+    private static CorpManager corpManager;
 
     @Override
     public void onEnable() {
@@ -24,10 +28,28 @@ public final class Plugin extends JavaPlugin {
 
         Messages.loadMessages();
         Statics.initItems();
+
+
+
+        if (!Bukkit.getOnlinePlayers().isEmpty())
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                PacketReader reader = new PacketReader();
+                reader.inject(player);
+            }
+
     }
 
     @Override
     public void onDisable() {
+
+        npcManager.clearNPCs();
+
+        if (!Bukkit.getOnlinePlayers().isEmpty())
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                PacketReader reader = new PacketReader();
+                reader.uninject(player);
+            }
+
         // Safe-Methoden
 
     }
@@ -48,11 +70,19 @@ public final class Plugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerLeaveListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(), this);
+        Bukkit.getPluginManager().registerEvents(new EntityExplodeListener(), this);
+        Bukkit.getPluginManager().registerEvents(new InteractNpcListener(), this);
+        Bukkit.getPluginManager().registerEvents(new InteractCorpListener(), this);
     }
 
     private void initUtils() {
         fileManager = new FileManager();
         npcManager = new NpcManager();
+        corpManager = new CorpManager();
+    }
+
+    public static CorpManager getCorpManager() {
+        return corpManager;
     }
 
     public static FileManager getFileManager() {
