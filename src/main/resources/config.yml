@@ -1,0 +1,72 @@
+####################
+#   VISION UTILS   #
+####################
+
+#
+#     GENERELLES
+#
+
+
+
+#
+#     MESSAGES
+#
+
+deathMessages:
+  CONTACT:
+    - "%Spielername% wurde soeben zerstachelt"
+    - "%Spielername% wurde genagelt"
+  ENTITY_ATTACK:
+    - "%Spielername% starb durch ENTITY_ATTACK"
+  ENTITY_SWEEP_ATTACK:
+    - "%Spielername% starb durch ENTITY_SWEEP_ATTACK"
+  PROJECTILE:
+    - "%Spielername% starb durch PROJECTILE"
+  SUFFOCATION:
+    - "%Spielername% starb durch SUFFOCATION"
+  FALL:
+    - "%Spielername% dachte, er könne fliegen."
+    - "%Spielername% hat wohl seine Elytra Zuhause gelassen."
+  FIRE:
+    - "%Spielername% ist heute on Fire."
+  FIRE_TICK:
+    - "%Spielername% ist dem Feuer nicht rechtzeitig entkommen"
+  LAVA:
+    - "%Spielername% wollte den einen Ring ein wenig zu sehr."
+  DROWNING:
+    - "%Spielername% dachte wohl, er sei ein Fisch."
+  BLOCK_EXPLOSION:
+    - "%Spielername% wurde anscheinend Opfer eines Anschlags."
+  ENTITY_EXPLOSION:
+    - "Weißt du, wer Creeper ganz besonders gerne hat ? %Spielername%"
+  VOID:
+    - "%Spielername% hat einfach den Flo gemacht!"
+  LIGHTNING:
+    - "%Spielername% ist jetzt eine mobile Ladestation."
+  SUICIDE:
+    - "%Spielername% hat sich das Leben genommen."
+  STARVATION:
+    - "%Spielername% hatte weniger zu essen, als Kinder in Afrika."
+  POISON:
+    - "%Spielername% ist heute mal wieder toxic."
+  MAGIC:
+    - "%Spielername% hat Bekanntschaft mit Magie gemacht."
+  WITHER:
+    - "%Spielername% hat sich nahezu erfolgreich dem Wither gestellt. Nahezu."
+  FALLING_BLOCK:
+    - "%Spielername% hat einen Block auf den Kopf bekommen."
+  THORNS:
+    - "%Spielername% hat die goldene Regel der Ethik am eigenen Leib erfahren."
+  DRAGON_BREATH:
+    - "%Spielername% musste den Mundgeruch eines Drachen aushalten."
+  FLY_INTO_WALL:
+    - "Wand: 1 , %Spielername%: 0"
+  HOT_FLOOR:
+    - "%Spielername% hat gelernt, dass man nicht auf einer Herdplatte laufen sollte."
+  CRAMMING:
+    - "%Spielername% hatte ein Gangbang, den er so schnell nicht mehr vergessen wird."
+
+joinMessage: "%Spielername% hat den Server betreten."
+
+quitMessage: "%Spielername% hat den Server verlassen."
+

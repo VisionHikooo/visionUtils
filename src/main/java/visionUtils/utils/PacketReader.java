@@ -112,7 +112,6 @@ public class PacketReader {
             result = field.get(instance);
             field.setAccessible(false);
         } catch (Exception e) {
-            e.printStackTrace();
         }
 
         return result;

@@ -1,9 +1,7 @@
 package visionUtils.listener.events;
 
 import net.minecraft.world.EnumHand;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import visionUtils.npc.Corp;
 

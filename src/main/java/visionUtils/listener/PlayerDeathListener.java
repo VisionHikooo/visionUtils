@@ -1,13 +1,11 @@
 package visionUtils.listener;
 
-import org.bukkit.entity.Pose;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import visionUtils.Plugin;
-import visionUtils.npc.Corp;
-import visionUtils.npc.VisionNPC;
+import visionUtils.utils.statics.Messages;
 
 import java.util.Arrays;
 
@@ -29,6 +27,8 @@ public class PlayerDeathListener implements Listener {
         * CUSTOM DEATH MESSAGES
         * */
 
-
+        String s = event.getEntity().getDisplayName();
+        event.setDeathMessage(Messages.getDeathMessage(event.getEntity().getLastDamageCause().getCause()
+                , event.getEntity().getDisplayName()));
     }
 }

@@ -36,7 +36,7 @@ public class PlayerInteractListener implements Listener {
                         if (seeds.contains(drop.getType())) {
                             if (drop.getAmount() == 1)
                                 return new ItemStack(Material.AIR);
-                            return new ItemStack(drop.getType(), drop.getAmount());
+                            return new ItemStack(drop.getType(), drop.getAmount()-1);
                         }
                         return drop;
                     }).forEach(

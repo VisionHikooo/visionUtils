@@ -29,8 +29,6 @@ public final class Plugin extends JavaPlugin {
         Messages.loadMessages();
         Statics.initItems();
 
-
-
         if (!Bukkit.getOnlinePlayers().isEmpty())
             for (Player player : Bukkit.getOnlinePlayers()) {
                 PacketReader reader = new PacketReader();
@@ -73,10 +71,14 @@ public final class Plugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EntityExplodeListener(), this);
         Bukkit.getPluginManager().registerEvents(new InteractNpcListener(), this);
         Bukkit.getPluginManager().registerEvents(new InteractCorpListener(), this);
+
+        Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), this);
+        Bukkit.getPluginManager().registerEvents(new GuiClickListener(), this);
     }
 
     private void initUtils() {
-        fileManager = new FileManager();
+        fileManager = new FileManager(getConfig());
+        saveConfig();
         npcManager = new NpcManager();
         corpManager = new CorpManager();
     }

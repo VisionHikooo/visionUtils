@@ -1,6 +1,5 @@
 package visionUtils.listener;
 
-import net.minecraft.server.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;

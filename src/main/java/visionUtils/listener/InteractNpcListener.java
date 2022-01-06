@@ -1,9 +1,9 @@
 package visionUtils.listener;
 
 import net.minecraft.world.EnumHand;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import visionUtils.gui.ItemShopGUI;
 import visionUtils.listener.events.InteractNpcEvent;
 
 public class InteractNpcListener implements Listener {
@@ -16,6 +16,8 @@ public class InteractNpcListener implements Listener {
         if (event.getHand() != EnumHand.a)
             return;
 
-        event.getPlayer().openInventory(Bukkit.createInventory(null, 5*9));
+        event.getPlayer().openInventory(
+                new ItemShopGUI(9*5, event.getPlayer().getDisplayName().toUpperCase()).getInventory()
+        );
     }
 }
