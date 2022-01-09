@@ -1,6 +1,8 @@
 package visionUtils.npc;
 
+import com.google.gson.JsonObject;
 import org.bukkit.entity.Player;
+import visionUtils.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +13,6 @@ public class NpcManager {
 
     public NpcManager() {
         npcs = new ArrayList<>();
-
-        // Load NPCs
-        loadNPCs();
     }
 
     public void showAllNPCs(Player player) {
@@ -40,6 +39,10 @@ public class NpcManager {
         npcs = new ArrayList<>();
     }
 
+    public void addNPC(JsonObject object) {
+        npcs.add(new VisionNPC(object));
+    }
+
     /*
     * Data
     * */
@@ -47,13 +50,4 @@ public class NpcManager {
     public List<VisionNPC> getNpcs() {
         return npcs;
     }
-
-    public void loadNPCs() {
-
-    }
-
-    public void safeNPCs() {
-
-    }
-
 }

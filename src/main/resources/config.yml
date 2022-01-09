@@ -46,7 +46,7 @@ deathMessages:
   SUICIDE:
     - "%Spielername% hat sich das Leben genommen."
   STARVATION:
-    - "%Spielername% hatte weniger zu essen, als Kinder in Afrika."
+    - "%Spielername% hatte weniger zu essen als Kinder in Afrika."
   POISON:
     - "%Spielername% ist heute mal wieder toxic."
   MAGIC:

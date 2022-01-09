@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Pose;
 import visionUtils.Plugin;
 import visionUtils.utils.statics.Messages;
+import visionUtils.utils.statics.Permissions;
 
 public class NpcCMD implements CommandExecutor {
 
@@ -19,6 +20,11 @@ public class NpcCMD implements CommandExecutor {
         }
 
         Player player = (Player) sender;
+
+        if (!(player.hasPermission(Permissions.NPC))) {
+            sender.sendMessage(Messages.noPermission);
+            return true;
+        }
 
         if (args.length == 0) {
             Plugin.getNpcManager().createNPC(player);

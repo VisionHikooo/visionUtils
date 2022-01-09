@@ -39,9 +39,6 @@ public final class Plugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
-        npcManager.clearNPCs();
-
         if (!Bukkit.getOnlinePlayers().isEmpty())
             for (Player player : Bukkit.getOnlinePlayers()) {
                 PacketReader reader = new PacketReader();
@@ -49,6 +46,9 @@ public final class Plugin extends JavaPlugin {
             }
 
         // Safe-Methoden
+        fileManager.safeAllNPCs();
+        npcManager.clearNPCs();
+
 
     }
 
@@ -77,8 +77,7 @@ public final class Plugin extends JavaPlugin {
     }
 
     private void initUtils() {
-        fileManager = new FileManager(getConfig());
-        saveConfig();
+        fileManager = new FileManager(this);
         npcManager = new NpcManager();
         corpManager = new CorpManager();
     }

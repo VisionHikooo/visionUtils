@@ -1,8 +1,10 @@
 package visionUtils.npc;
 
+import com.google.gson.JsonObject;
 import net.minecraft.server.level.EntityPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import visionUtils.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,5 +32,10 @@ public class CorpManager {
         corps.forEach(npc -> {
             npc.showNPC(player);
         });
+    }
+
+    public void addCorp(JsonObject object) {
+        if (corps != null)
+            corps.add(new Corp(object));
     }
 }
