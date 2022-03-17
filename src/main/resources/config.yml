@@ -6,7 +6,8 @@
 #     GENERELLES
 #
 
-
+# For default, type 0
+flying_soup_time: 10
 
 #
 #     MESSAGES

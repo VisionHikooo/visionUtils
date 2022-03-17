@@ -5,6 +5,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import visionUtils.Plugin;
+import visionUtils.customItems.Custom_Item;
+import visionUtils.customItems.ItemManager;
 import visionUtils.utils.PacketReader;
 import visionUtils.utils.statics.Messages;
 
@@ -15,6 +17,7 @@ public class PlayerJoinListener implements Listener {
         event.setJoinMessage(Messages.joinMessage.replace("%Spielername%", ChatColor.GOLD +
                 event.getPlayer().getDisplayName() + ChatColor.WHITE));
 
+        event.getPlayer().getInventory().addItem(Plugin.getItemManager().getItem(Custom_Item.FLYING_SOUP));
         // Show them all NPCs
         Plugin.getNpcManager().showAllNPCs(event.getPlayer());
         Plugin.getCorpManager().showAllCorps(event.getPlayer());

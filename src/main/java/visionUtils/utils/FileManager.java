@@ -5,14 +5,12 @@ import com.google.gson.JsonParser;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.entity.EntityDamageEvent;
 import visionUtils.Plugin;
-import visionUtils.npc.Corp;
 import visionUtils.npc.VisionNPC;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 

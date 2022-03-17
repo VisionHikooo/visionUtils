@@ -6,19 +6,24 @@ import org.bukkit.plugin.java.JavaPlugin;
 import visionUtils.commands.NpcCMD;
 import visionUtils.commands.RainingTrollCMD;
 import visionUtils.commands.SkipNightCMD;
+import visionUtils.customItems.ItemManager;
 import visionUtils.listener.*;
 import visionUtils.npc.CorpManager;
 import visionUtils.npc.NpcManager;
 import visionUtils.utils.FileManager;
 import visionUtils.utils.PacketReader;
 import visionUtils.utils.statics.Messages;
-import visionUtils.utils.statics.Statics;
 
 public final class Plugin extends JavaPlugin {
 
     private static FileManager fileManager;
     private static NpcManager npcManager;
     private static CorpManager corpManager;
+    private static ItemManager itemManager;
+
+    public static ItemManager getItemManager() {
+        return itemManager;
+    }
 
     @Override
     public void onEnable() {
@@ -27,7 +32,6 @@ public final class Plugin extends JavaPlugin {
         initUtils();
 
         Messages.loadMessages();
-        Statics.initItems();
 
         if (!Bukkit.getOnlinePlayers().isEmpty())
             for (Player player : Bukkit.getOnlinePlayers()) {
@@ -80,6 +84,7 @@ public final class Plugin extends JavaPlugin {
         fileManager = new FileManager(this);
         npcManager = new NpcManager();
         corpManager = new CorpManager();
+        itemManager = new ItemManager();
     }
 
     public static CorpManager getCorpManager() {
