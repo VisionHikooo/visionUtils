@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class FlyingSoup extends visionItem implements Listener {
+public class FlyingSoup extends visionItem {
 
     private HashMap<UUID, Integer> actUser = new HashMap<>();
 
