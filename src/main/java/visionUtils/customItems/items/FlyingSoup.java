@@ -3,24 +3,21 @@ package visionUtils.customItems.items;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 import visionUtils.Plugin;
-import visionUtils.customItems.visionItem;
+import visionUtils.customItems.VisionItem;
 import visionUtils.utils.ItemBuilder;
-import visionUtils.utils.statics.Messages;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class FlyingSoup extends visionItem {
+public class FlyingSoup extends VisionItem {
 
     private HashMap<UUID, Integer> actUser = new HashMap<>();
 
@@ -49,7 +46,6 @@ public class FlyingSoup extends visionItem {
             public void run() {
 
                 int time = actUser.get(event.getPlayer().getUniqueId());
-                Bukkit.broadcastMessage("Zeit: " + time);
                 if (time == 0) {
                     event.getPlayer().sendMessage("Die Zeit ist abgelaufen");
                     event.getPlayer().setFlying(false);

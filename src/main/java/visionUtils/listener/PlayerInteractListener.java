@@ -1,5 +1,6 @@
 package visionUtils.listener;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -23,9 +24,8 @@ public class PlayerInteractListener implements Listener {
             Material.CARROTS, Material.COCOA_BEANS, Material.NETHER_WART);
 
     @EventHandler
-    public void onBlockBreak(PlayerInteractEvent event) {
+    public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getHand().equals(EquipmentSlot.HAND)) {
-
             if (crops.contains(event.getClickedBlock().getType())) {
 
                 Ageable crop = (Ageable) event.getClickedBlock().getBlockData();
@@ -61,6 +61,7 @@ public class PlayerInteractListener implements Listener {
                 event.getPlayer().playSound(event.getClickedBlock().getLocation(), Sound.BLOCK_ROOTED_DIRT_PLACE, 3, 0.5f);
             }
         }
+
     }
 
 }

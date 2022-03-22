@@ -3,11 +3,15 @@
 ####################
 
 #
-#     GENERELLES
+#     GENERELL
 #
 
-# For default, type 0
+
+# Items
+# Time in minutes. For default, type 0
 flying_soup_time: 10
+shield_bow_reset_time: 5
+xp_multiplier: 0.1
 
 #
 #     MESSAGES

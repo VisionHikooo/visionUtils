@@ -18,6 +18,8 @@ public class PlayerJoinListener implements Listener {
 
         event.getPlayer().getInventory().addItem(Plugin.getItemManager().getItem(Custom_Item.FLYING_SOUP));
         event.getPlayer().getInventory().addItem(Plugin.getItemManager().getItem(Custom_Item.SHIELDBOW_CHESTPLATE));
+        event.getPlayer().getInventory().addItem(Plugin.getItemManager().getItem(Custom_Item.ENMA));
+        event.getPlayer().getInventory().addItem(Plugin.getItemManager().getItem(Custom_Item.FLYING_BOW));
         // Show them all NPCs
         Plugin.getNpcManager().showAllNPCs(event.getPlayer());
         Plugin.getCorpManager().showAllCorps(event.getPlayer());

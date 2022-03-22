@@ -10,6 +10,7 @@ import visionUtils.customItems.ItemManager;
 import visionUtils.listener.*;
 import visionUtils.npc.CorpManager;
 import visionUtils.npc.NpcManager;
+import visionUtils.teleport.InteractSignListener;
 import visionUtils.utils.FileManager;
 import visionUtils.utils.PacketReader;
 import visionUtils.utils.statics.Messages;
@@ -75,9 +76,9 @@ public final class Plugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EntityExplodeListener(), this);
         Bukkit.getPluginManager().registerEvents(new InteractNpcListener(), this);
         Bukkit.getPluginManager().registerEvents(new InteractCorpListener(), this);
-
         Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), this);
         Bukkit.getPluginManager().registerEvents(new GuiClickListener(), this);
+        Bukkit.getPluginManager().registerEvents(new InteractSignListener(), this);
     }
 
     private void initUtils() {

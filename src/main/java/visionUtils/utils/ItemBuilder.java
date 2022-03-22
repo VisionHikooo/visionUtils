@@ -4,6 +4,8 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagString;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.craftbukkit.v1_18_R1.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -53,6 +55,16 @@ public class ItemBuilder {
 
     public ItemBuilder setCustomModelData(int data) {
         meta.setCustomModelData(data);
+        return this;
+    }
+
+    public ItemBuilder addModifier(Attribute attribute, AttributeModifier modifier) {
+        meta.addAttributeModifier(attribute, modifier);
+        return this;
+    }
+
+    public ItemBuilder removeModifier(Attribute attribute) {
+        meta.removeAttributeModifier(attribute);
         return this;
     }
 

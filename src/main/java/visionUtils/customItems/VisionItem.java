@@ -8,9 +8,9 @@ import visionUtils.Plugin;
 
 import java.util.ArrayList;
 
-public abstract class visionItem implements Listener {
+public abstract class VisionItem implements Listener {
 
-    public visionItem() {
+    public VisionItem() {
         recipe = setRecipe();
     }
 

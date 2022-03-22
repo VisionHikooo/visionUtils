@@ -7,17 +7,20 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.inventory.*;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
+import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import visionUtils.Plugin;
-import visionUtils.customItems.visionItem;
+import visionUtils.customItems.VisionItem;
 import visionUtils.utils.ItemBuilder;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class ShieldBowChestplate extends visionItem {
+public class ShieldBowChestplate extends VisionItem {
 
     private ArrayList<UUID> cooldown = new ArrayList<>();
 
@@ -40,7 +43,7 @@ public class ShieldBowChestplate extends visionItem {
             return;
 
 
-        if ((player.getHealth()-event.getDamage())<=5) {
+        if ((player.getHealth()-event.getDamage())<=5 && !cooldown.contains(player.getUniqueId())) {
             event.setCancelled(true);
             player.sendMessage("Der ShieldBow hat sich aktiviert!");
             player.playSound(player.getEyeLocation(), Sound.ENTITY_GHAST_SHOOT, 4, 0.5f);
@@ -51,7 +54,7 @@ public class ShieldBowChestplate extends visionItem {
             Bukkit.getScheduler().runTaskLater(Plugin.getPlugin(Plugin.class), (task) -> {
                 player.sendMessage("Deine Chestplate ist jetzt wieder bereit!");
                 cooldown.remove(player.getUniqueId());
-            }, 10*60);
+            }, Plugin.getFileManager().getConfig().getInt("shield_bow_reset_time")*60*20);
         }
 
     }
